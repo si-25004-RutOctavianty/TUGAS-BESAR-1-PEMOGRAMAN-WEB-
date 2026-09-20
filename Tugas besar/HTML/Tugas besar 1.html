@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080812">
+<title>JERUKA Entertainment</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../CSS/style.css">
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+<div class="bg-blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header class="navbar" id="navbar">
+    <div class="logo" onclick="goToPage('home')">JERU<span>KA</span></div>
+    <nav class="nav-menu">
+        <a class="nav-link active" data-page="home">Home</a>
+        <a class="nav-link" data-page="about">About Us</a>
+        <a class="nav-link" data-page="artists">Artists</a>
+        <a class="nav-link" data-page="events">Events</a>
+        <a class="nav-link" data-page="merch">Merchandise</a>
+        <a class="nav-link" data-page="meet">Meet &amp; Greet</a>
+        <a class="nav-link" data-page="contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+        <button class="icon-btn" id="searchButton" title="Cari" aria-label="Cari"><i class="fas fa-magnifying-glass"></i></button>
+        <button class="icon-btn" id="themeButton" title="Ganti tema" aria-label="Ganti tema"><i class="fas fa-moon"></i></button>
+        <button class="icon-btn cart-btn" id="cartButton" title="Keranjang" aria-label="Keranjang">
+            <i class="fas fa-bag-shopping"></i><span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="icon-btn mobile-menu" id="mobileButton" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+    <a data-page="home">Home</a><a data-page="about">About Us</a>
+    <a data-page="artists">Artists</a><a data-page="events">Events</a>
+    <a data-page="merch">Merchandise</a><a data-page="meet">Meet &amp; Greet</a>
+    <a data-page="contact">Contact</a>
+</div>
+
+<!-- HOME -->
+<section id="home" class="page">
+    <div class="hero">
+        <div class="hero-content">
+            <p class="section-label hero-fade" style="--d:.05s">Selamat datang di JERUKA Entertainment</p>
+            <h1>
+                <span class="line"><span style="--i:0">CREATE.</span></span>
+                <span class="line"><span class="gradient-text" style="--i:1">CONNECT.</span></span>
+                <span class="line"><span class="gradient-text" style="--i:2">ENTERTAIN.</span></span>
+            </h1>
+            <p class="hero-description hero-fade" style="--d:.75s">
+                JERUKA Entertainment mempertemukan artis, event, merchandise, tiket, dan pengalaman
+                Meet &amp; Greet dalam satu tempat.
+            </p>
+            <div class="hero-buttons hero-fade" style="--d:.9s">
+                <button class="btn-primary" onclick="goToPage('artists')">Jelajahi Artis <i class="fas fa-arrow-right"></i></button>
+                <button class="btn-secondary" onclick="goToPage('events')"><i class="fas fa-ticket"></i> Event Mendatang</button>
+            </div>
+        </div>
+        <div class="hero-visual" id="heroVisual">
+            <div class="orb one"></div><div class="orb two"></div><div class="orb three"></div>
+            <div class="team-frame" id="teamFrame">
+                <div class="team-float">
+                    <div class="team-glow"></div>
+                    <div class="team-tilt">
+                        <div class="team-card">
+                            <div class="team-inner">
+                                <!-- ⬇️ GANTI "foto-tim.jpg" DENGAN FOTO KAMU ⬇️ -->
+                                <img src="../IMAGE/WhatsApp Image 2026-09-20 at 15.30.32.jpeg" alt="Foto Tim JERUKA"
+                                     onerror="this.style.display='none';this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;display:grid;place-items:center;font-size:60px;color:#fff;font-weight:800;background:linear-gradient(135deg,#8b5cf6,#ec4899);border-radius:20px&quot;>JERUKA</div>'">
+                            </div>
+                        </div>
+                    </div>
+                    <span class="spark s1">✦</span><span class="spark s2">✦</span><span class="spark s3">✦</span>
+                </div>
+            </div>
+            <div class="floating-card one"><i class="fas fa-microphone-lines"></i> <span>Artists</span></div>
+            <div class="floating-card two"><i class="fas fa-ticket"></i> <span>Live Events</span></div>
+            <div class="floating-card three"><i class="fas fa-wand-magic-sparkles"></i> <span>Experiences</span></div>
+        </div>
+    </div>
+
+    <div class="stats">
+        <div class="stat"><h2 class="count" id="statArtists" data-count="77" data-suffix="">0</h2><p>Artis</p></div>
+        <div class="stat"><h2 class="count" id="statEvents" data-count="4" data-suffix="">0</h2><p>Event Mendatang</p></div>
+        <div class="stat"><h2 class="count" id="statMerch" data-count="6" data-suffix="">0</h2><p>Merchandise</p></div>
+        <div class="stat"><h2>24/7</h2><p>Entertainment</p></div>
+    </div>
+
+    <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marqueeTrack"></div></div>
+
+    <div class="section container">
+        <div class="section-heading reveal">
+            <div><p class="section-label">Temukan</p><h2 class="section-title">Featured Artists</h2></div>
+            <a class="see-all" onclick="goToPage('artists')">Lihat katalog <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="artist-grid" id="homeArtists"></div>
+    </div>
+
+    <div class="section dark-section">
+        <div class="container">
+            <div class="section-heading reveal">
+                <div><p class="section-label">Pengalaman langsung</p><h2 class="section-title">Upcoming Events</h2></div>
+                <a class="see-all" onclick="goToPage('events')">Lihat event <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="event-grid" id="homeEvents"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="page hidden-page">
+    <div class="page-header">
+        <p class="section-label">Kenali kami</p>
+        <h1>About <span class="gradient-text">JERUKA</span></h1>
+        <p>Mengenal konsep, visi, misi, dan layanan JERUKA Entertainment.</p>
+    </div>
+    <div class="section container">
+        <div class="about-grid">
+            <div class="about-box reveal">
+                <p class="section-label">JERUKA Entertainment</p>
+                <div class="big-logo">JERUKA<span class="gradient-text">.</span></div>
+                <p style="color:#c9c9d8;margin-top:12px;font-size:13px">
+                    Platform entertainment untuk menghubungkan talent, audience, event, dan merchandise.
+                </p>
+            </div>
+            <div class="about-text reveal" style="--d:150ms">
+                <p class="section-label">Profil kami</p>
+                <h2 class="section-title">Satu tempat untuk dunia entertainment.</h2>
+                <p>JERUKA dirancang sebagai platform entertainment yang menyediakan katalog artis,
+                    informasi event, pembelian tiket, merchandise resmi, serta pendaftaran Meet &amp; Greet.</p>
+                <div class="info-grid">
+                    <div class="info-card"><h4>Vision</h4><p>Menjadi platform entertainment yang mudah diakses dan interaktif.</p></div>
+                    <div class="info-card"><h4>Mission</h4><p>Menghubungkan talent dan audience melalui pengalaman digital.</p></div>
+                </div>
+                <div class="service-list">
+                    <div>🎤 Artist Management &amp; Catalog</div>
+                    <div>🎫 Event &amp; Concert Ticketing</div>
+                    <div>🛍️ Official Merchandise</div>
+                    <div>✨ Meet &amp; Greet Experience</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ARTISTS -->
+<section id="artists" class="page hidden-page">
+    <div class="page-header">
+        <p class="section-label">Kenali para talent</p>
+        <h1>Artist <span class="gradient-text">Catalog</span></h1>
+        <p>Cari dan filter artis berdasarkan nama dan genre.</p>
+    </div>
+
+    <div class="section container">
+        <div class="filter-panel">
+            <input class="form-control" id="artistSearch" placeholder="Cari nama artis..." aria-label="Cari nama artis">
+            <select class="form-control" id="genreFilter" aria-label="Filter genre">
+                <option value="all">Semua Genre</option>
+            </select>
+        </div>
+        <div class="genre-pills" id="genrePills"></div>
+        <div class="result-count" id="artistResultCount"></div>
+        <div class="artist-grid" id="allArtists"></div>
+    </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events" class="page hidden-page">
+    <div class="page-header">
+        <p class="section-label">Live entertainment</p>
+        <h1>Events &amp; <span class="gradient-text">Concerts</span></h1>
+        <p>Informasi event, artis, jadwal, lokasi, harga tiket, dan pembelian tiket.</p>
+    </div>
+    <div class="section container">
+        <div class="event-grid" id="allEvents"></div>
+    </div>
+</section>
+
+<!-- MERCH -->
+<section id="merch" class="page hidden-page">
+    <div class="page-header">
+        <p class="section-label">JERUKA Official</p>
+        <h1>Merch<span class="gradient-text">andise</span></h1>
+        <p>Pilih merchandise dan masukkan ke keranjang.</p>
+    </div>
+    <div class="section container">
+        <div class="merch-grid" id="merchGrid"></div>
+    </div>
+</section>
+
+<!-- MEET & GREET -->
+<section id="meet" class="page hidden-page">
+    <div class="page-header">
+        <p class="section-label">Pengalaman spesial</p>
+        <h1>Meet &amp; <span class="gradient-text">Greet</span></h1>
+        <p>Daftar untuk mengikuti sesi Meet &amp; Greet bersama artis pilihan.</p>
+    </div>
+    <div class="section form-section">
+        <div class="container">
+            <div class="form-card reveal">
+                <form id="meetForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="meetName">Nama Lengkap <span class="required">*</span></label>
+                            <input class="form-control" id="meetName" required placeholder="Masukkan nama">
+                        </div>
+                        <div class="form-group">
+                            <label for="meetEmail">Email <span class="required">*</span></label>
+                            <input type="email" class="form-control" id="meetEmail" required placeholder="nama@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="meetPhone">Nomor Telepon <span class="required">*</span></label>
+                            <input type="tel" class="form-control" id="meetPhone" required placeholder="08xxxxxxxxxx">
+                        </div>
+                        <div class="form-group">
+                            <label for="meetCount">Jumlah Peserta <span class="required">*</span></label>
+                            <input type="number" min="1" max="5" class="form-control" id="meetCount" required value="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="meetArtist">Pilih Artis <span class="required">*</span></label>
+                            <select class="form-control" id="meetArtist" required></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="meetEvent">Pilih Event / Session <span class="required">*</span></label>
+                            <select class="form-control" id="meetEvent" required></select>
+                        </div>
+                        <div class="form-group full">
+                            <label for="meetNotes">Catatan</label>
+                            <textarea class="form-control" id="meetNotes" placeholder="Tambahkan catatan..."></textarea>
+                        </div>
+                        <div class="full">
+                            <button class="btn-primary" type="submit"><i class="fas fa-wand-magic-sparkles"></i> Booking Meet &amp; Greet</button>
+                            <p class="help-text">* Simulasi booking front-end.</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="page hidden-page">
+    <div class="page-header">
+        <p class="section-label">Hubungi kami</p>
+        <h1>Contact <span class="gradient-text">Us</span></h1>
+        <p>Hubungi JERUKA untuk pertanyaan, kerja sama, dan informasi entertainment.</p>
+    </div>
+    <div class="section container">
+        <div class="contact-grid">
+            <div class="reveal">
+                <p class="section-label">Informasi JERUKA</p>
+                <h2 class="section-title">Let's connect.</h2>
+                <div class="contact-info">
+                    <div class="contact-item"><strong>📍 Address</strong><span>Jl. Entertainment No. 10, Bandung, Indonesia</span></div>
+                    <div class="contact-item"><strong>✉️ Email</strong><span>hello@jeruka-entertainment.example</span></div>
+                    <div class="contact-item"><strong>📞 Phone</strong><span>+62 812-3456-7890</span></div>
+                </div>
+                <div class="socials">
+                    <a href="#" onclick="return false">Instagram</a>
+                    <a href="#" onclick="return false">TikTok</a>
+                    <a href="#" onclick="return false">YouTube</a>
+                    <a href="#" onclick="return false">Facebook</a>
+                </div>
+            </div>
+            <div class="form-card reveal" style="--d:150ms">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="contactName">Nama <span class="required">*</span></label>
+                        <input class="form-control" id="contactName" required placeholder="Nama lengkap">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email <span class="required">*</span></label>
+                        <input type="email" class="form-control" id="contactEmail" required placeholder="nama@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Pesan <span class="required">*</span></label>
+                        <textarea class="form-control" id="contactMessage" required placeholder="Tulis pesan..."></textarea>
+                    </div>
+                    <button class="btn-primary" type="submit">Kirim Pesan <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEARCH -->
+<div id="searchOverlay" class="search-overlay">
+    <div class="search-box">
+        <button class="search-close" id="closeSearch" aria-label="Tutup">×</button>
+        <p class="section-label">Cari di JERUKA</p>
+        <h2>Cari Entertainment</h2>
+        <input id="searchInput" class="form-control search-input" placeholder="Cari artis, event, merchandise...">
+        <div id="searchResults" class="search-results"></div>
+    </div>
+</div>
+
+<!-- ARTIST MODAL -->
+<div id="artistModal" class="modal">
+    <div class="modal-content artist-modal-content">
+        <img class="modal-ambient" id="modalAmbient" alt="" onerror="photoError(this)">
+        <div class="modal-top-bar">
+            <button class="btn-modal-action" id="favArtistModal" title="Favorit" aria-label="Favorit"><i class="far fa-heart"></i></button>
+            <button class="btn-modal-action" id="backArtistModal" title="Kembali" aria-label="Kembali"><i class="fas fa-arrow-left"></i></button>
+            <button class="btn-modal-action" id="closeArtistModal" title="Tutup" aria-label="Tutup"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="artist-modal-grid">
+            <div class="artist-modal-photo" id="artistPhotoClick">
+                <img id="modalArtistImage" src="" alt="Foto Artis" onerror="photoError(this)">
+                <div class="photo-hint"><i class="fas fa-hand-pointer"></i> Ketuk foto untuk kirim love</div>
+            </div>
+
+            <div class="artist-modal-info">
+                <p class="section-label" id="modalArtistCategory">Artist</p>
+                <h2 id="modalArtistName">Nama Artis</h2>
+                <p id="modalArtistGenre" class="artist-modal-genre">Genre: -</p>
+                <p id="modalArtistBio" class="artist-modal-bio">Deskripsi artis...</p>
+
+                <div class="songs-dropdown" id="songsDropdown">
+                    <button class="songs-toggle" id="songsToggle" type="button">
+                        <span class="toggle-left">
+                            <i class="fas fa-music"></i>
+                            <span>Popular Songs</span>
+                            <span class="song-count" id="songCount">0</span>
+                        </span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </button>
+                    <div class="songs-list-wrap">
+                        <div class="songs-list" id="songsList"></div>
+                    </div>
+                </div>
+
+                <div class="audio-player" id="audioPlayer">
+                    <button class="player-cancel" id="playerCancel" title="Tutup player"><i class="fas fa-times"></i></button>
+                    <div class="player-top">
+                        <div class="album-art" id="playerAlbumArt">🎵</div>
+                        <div class="player-meta">
+                            <div class="player-title" id="playerTitle">-</div>
+                            <div class="player-artist" id="playerArtist">-</div>
+                        </div>
+                    </div>
+                    <div class="player-controls">
+                        <button class="play-btn" id="playBtn" type="button"><i class="fas fa-play"></i></button>
+                        <div class="progress-wrap">
+                            <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+                            <span class="time-label" id="timeLabel">0:00</span>
+                        </div>
+                    </div>
+                    <div class="player-error" id="playerError">⚠️ Preview tidak tersedia untuk lagu ini.</div>
+                </div>
+
+                <div class="modal-platforms" id="modalArtistPlatforms"></div>
+
+                <button class="btn-primary" style="margin-top:22px;align-self:flex-start"
+                        onclick="goToPage('meet'); closeArtistModal()">
+                    <i class="fas fa-wand-magic-sparkles"></i> Booking Meet &amp; Greet
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- GENERAL MODAL -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close" id="closeModal" aria-label="Tutup">×</button>
+        <p class="section-label">Informasi JERUKA</p>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+    </div>
+</div>
+
+<!-- CART -->
+<div id="cartOverlay" class="cart-overlay"></div>
+<aside id="cartDrawer" class="cart-drawer" aria-label="Keranjang belanja">
+    <div class="cart-head"><h2>Shopping Cart</h2><button class="close-x" id="closeCart" aria-label="Tutup">×</button></div>
+    <div id="cartItems"></div>
+    <div class="cart-summary">
+        <div class="summary-row"><span>Subtotal</span><strong id="cartSubtotal">Rp0</strong></div>
+        <div class="summary-row"><span>Service Fee (5%)</span><strong id="cartFee">Rp0</strong></div>
+        <div class="summary-row total"><span>Total</span><strong id="cartTotal">Rp0</strong></div>
+        <button class="btn-primary" style="width:100%;margin-top:15px" id="checkoutButton">Checkout <i class="fas fa-arrow-right"></i></button>
+        <p class="help-text">Checkout hanya simulasi front-end.</p>
+    </div>
+</aside>
+
+<audio id="previewAudio" preload="none"></audio>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<footer>
+    <div class="footer-logo">JERU<span>KA</span></div>
+    <p>Entertainment • Artists • Events • Merchandise • Experiences</p>
+    <div class="footer-links">
+        <a onclick="goToPage('home')">Home</a>
+        <a onclick="goToPage('about')">About Us</a>
+        <a onclick="goToPage('artists')">Artists</a>
+        <a onclick="goToPage('events')">Events</a>
+        <a onclick="goToPage('merch')">Merchandise</a>
+        <a onclick="goToPage('meet')">Meet &amp; Greet</a>
+        <a onclick="goToPage('contact')">Contact</a>
+    </div>
+    <p>© 2026 JERUKA Entertainment • Project Website</p>
+</footer>
+
+<script>
+/* =========================================================
+   FOTO ARTIS
+========================================================= */
+const PALETTES=[["#8b5cf6","#ec4899"],["#a855f7","#06b6d4"],["#ec4899","#f59e0b"],["#06b6d4","#8b5cf6"],["#6366f1","#ec4899"],["#f43f5e","#8b5cf6"],["#14b8a6","#8b5cf6"],["#f97316","#ec4899"]];
+function hashStr(s){let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))>>>0;return h;}
+function makeAvatar(name,ini){
+    const h=hashStr(name),p=PALETTES[h%PALETTES.length];
+    const svg=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'>
+<defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='${p[0]}'/><stop offset='1' stop-color='${p[1]}'/></linearGradient>
+<radialGradient id='r' cx='.3' cy='.15' r='.85'><stop offset='0' stop-color='#fff' stop-opacity='.38'/><stop offset='1' stop-color='#fff' stop-opacity='0'/></radialGradient></defs>
+<rect width='400' height='500' fill='url(#g)'/><rect width='400' height='500' fill='url(#r)'/>
+<circle cx='${60+h%280}' cy='${70+h%130}' r='${90+h%60}' fill='#fff' opacity='.08'/>
+<circle cx='${320-h%220}' cy='${390-h%100}' r='${70+h%50}' fill='#000' opacity='.13'/>
+<circle cx='200' cy='185' r='64' fill='#fff' opacity='.24'/>
+<path d='M64 500c0-98 62-152 136-152s136 54 136 152z' fill='#fff' opacity='.24'/>
+<text x='200' y='${ini.length>2?205:212}' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='${ini.length>2?50:62}' fill='#fff'>${ini}</text></svg>`;
+    return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg);
+}
+
+const A=(id,name,category,genre,initial,bio,songs,o={})=>({
+    id,name,category,genre,initial,bio,songs,
+    wiki:o.wiki,wikiId:o.wikiId,image:o.image||"",q:o.q||name,
+    spotify:o.spotify||`https://open.spotify.com/search/${encodeURIComponent(o.q||name)}`,
+    youtube:o.youtube||`https://www.youtube.com/results?search_query=${encodeURIComponent((o.q||name)+" official")}`
+});
+
+/* ===== DATA ARTIS ===== */
+/* untuk hemat space, isi data artis sama seperti kode sebelumnya.
+   Copy dari file kamu dari: const artists=[ ... ]; */
+const artists=[
+    A("lyodra","Lyodra","Musisi","Pop","L","Penyanyi dengan karakter vokal kuat.",["Pesan Terakhir","Ego","Sang Dewi","Kalau Bosan"],{wiki:"Lyodra",image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Lyodra%2C%20Uleg%20Talent%20School%2C%20Pakuwon%20Mall%2C%20West%20Surabaya%20%28cropped%29.jpg"}),
+    A("tulus","Tulus","Musisi","Pop","T","Penyanyi dan penulis lagu.",["Hati-Hati di Jalan","Monokrom","Interaksi","Pamit"],{wiki:"Tulus (singer)",image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Tulus.jpg"}),
+    A("mahalini","Mahalini","Musisi","Pop","M","Penyanyi pop dengan karya emosional.",["Sial","Sisa Rasa","Melawan Restu","Bawa Dia Kembali"],{image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Mahalini%20on%20Opening%20Ceremony%20Fornas%20VI.png"}),
+    A("tiara","Tiara Andini","Musisi","Pop","TA","Penyanyi aktif di dunia musik.",["Janji Setia","Usai","Kupu-Kupu","Bahaya"],{image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Tiara%20Andini%20photo%20by%20Winston%20Gomez%20%282021%29.jpg"}),
+    A("raisa","Raisa","Musisi","R&B","R","Penyanyi dengan karakter vokal pop/R&B.",["Kali Kedua","Could It Be","Mantan Terindah","Serba Salah"],{wiki:"Raisa Andriana",image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Raisa.png"}),
+    A("isyana","Isyana Sarasvati","Musisi","Rock","IS","Penyanyi dan komposer.",["Tetap Dalam Jiwa","Sekali Lagi","Lembaran Buku","Il Sogno"],{image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Isyana%20Sarasvati%2C%20Pakuwon%20Mall%2C%20West%20Surabaya.jpg"}),
+    A("hindia","Hindia","Musisi","Indie","H","Musisi dengan cerita kehidupan.",["Evaluasi","Cincin","Secukupnya","Rumah ke Rumah"],{wiki:"Baskara Putra",wikiId:"Hindia",image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Daniel%20Baskara%20Putra%20%28Hindia%29.jpg"}),
+    A("nadin","Nadin Amizah","Musisi","Indie","NA","Penyanyi dengan nuansa puitis.",["Bertaut","Sorai","Rayuan Perempuan Gila","Kanyaah"],{image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Nadin%20Amizah%20Performs%20at%20Jakarta%20International%20Jazz%20Java%20Festival%202020.jpg"}),
+    A("pamungkas","Pamungkas","Musisi","Indie","P","Musisi indie pop.",["To The Bone","One Only","Monolog","Kenangan Manis"],{wiki:"Pamungkas (singer)",spotify:"https://open.spotify.com/artist/7d86ERIvO5UG44j7Va0Y0C",youtube:"https://www.youtube.com/user/rpamungkas"}),
+    A("iqbaal","Iqbaal Ramadhan","Aktor","Drama","IR","Aktor dan entertainer.",["Rindu Sendiri","Dulu","Hello You"],{image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Iqbaal%20Ramadhan%20on%20Ini%20Talkshow%20Netmediatama.jpg"}),
+    A("angga","Angga Yunanda","Aktor","Drama","AY","Aktor Indonesia.",["Soundtrack Project","Entertainment Project"],{image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Angga%20Yunanda%20at%20Sundance%20Film%20Festival%202026-5.jpg"}),
+    A("komeng","Komeng","Komedian","Comedy","K","Komedian dan entertainer.",["Comedy Show","Live Comedy","Entertainment Stage"],{image:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Komeng%20DPD%20RI.jpg"}),
+    A("rossa","Rossa","Musisi","Pop","RO","Diva pop Indonesia.",["Hati Yang Kau Sakiti","Terlanjur Cinta","Pudar","Tegar"],{wiki:"Rossa (singer)"}),
+    A("andmesh","Andmesh Kamaleng","Musisi","Pop","AK","Penyanyi dengan suara khas.",["Cinta Luar Biasa","Hanya Rindu","Kumau Dia","Tuhan Jaga Dia"],{q:"Andmesh"}),
+    A("feast","Feast","Musisi","Indie","F","Band indie rock.",["Gugur Bunga","Peradaban","Gadis Malam","Cinta Tak Ada Mati"],{wiki:"Feast (band)",q:"Feast band"}),
+    A("fourtwnty","Fourtwnty","Musisi","Indie","4T","Band indie reflektif.",["Zona Nyaman","Fana Merah Jambu","Kusut","Realita"]),
+    A("juicy","Juicy Luicy","Musisi","Indie","JL","Band pop indie.",["Lantas","Malam Minggu","Setengah Hati","Pesan Terakhir"]),
+    A("ardhito","Ardhito Pramono","Musisi","Indie","AP","Musisi jazz-pop.",["Bitterlove","Sudah","Fine Today","I Just Couldn't Save You"]),
+    A("yura","Yura Yunita","Musisi","Pop","YY","Penyanyi dengan vokal khas.",["Cinta Dan Rahasia","Harus Bahagia","Dunia Tipu-Tipu","Intuisi"]),
+    A("glenn","Glenn Fredly","Musisi","R&B","GF","Legenda R&B Indonesia.",["Januari","Sedih Tak Berujung","Kasih Putih","Cinta Terakhir"]),
+    A("afgan","Afgan","Musisi","R&B","AF","Penyanyi dengan vokal halus.",["Sadis","Terima Kasih Cinta","Bukan Cinta Biasa","Knock Me Out"]),
+    A("marcell","Marcell Siahaan","Musisi","R&B","MS","Penyanyi R&B soul.",["Firasat","Peri Cintaku","Cinta Mati","Nuansa Bening"]),
+    A("dewa19","Dewa 19","Musisi","Rock","D19","Band rock legendaris.",["Kangen","Pupus","Separuh Nafas","Cinta Kan Membawamu"]),
+    A("slank","Slank","Musisi","Rock","SL","Band rock legendaris.",["Terlalu Manis","Balikin","Virus","Kamu Harus Pulang"]),
+    A("sheila","Sheila On 7","Musisi","Rock","S7","Band pop rock Indonesia.",["Dan","Kita","Sephia","Melompat Lebih Tinggi"],{wiki:"Sheila on 7"}),
+    A("sari","Sari Simorangkir","Musisi","Rohani","SS","Penyanyi rohani Kristen.",["Bapa Engkau Sungguh Baik","Ku Mau Cinta Yesus","Tuhan Kau Gembalaku","Besar SetiaMu"]),
+    A("sidney","Sidney Mohede","Musisi","Rohani","SM","Penyanyi rohani worship.",["Ku Mau Cinta Yesus","Kubawa Korban Syukur","Saat Ku Sendiri","Yesus Kekasih Jiwaku"]),
+    A("jpcc","JPCC Worship","Musisi","Rohani","JW","Tim worship gereja.",["Sampai Akhir","Ku Diberkati","Yesus Muara Harapanku","Berkuasa"]),
+    A("gkdi","GKDI Worship","Musisi","Rohani","GW","Tim worship kontemporer.",["Ku Dimampukan","Kemenangan","Bapa Yang Kekal","Lebih Dari Pemenang"],{wiki:null}),
+    A("grezia","Grezia Epiphania","Musisi","Rohani","GE","Penyanyi rohani muda.",["Tuhan Adalah Gembalaku","Sungguh Indah","Ku Mau Cinta Yesus","Kasih SetiaMu"]),
+    A("nikita","Nikita","Musisi","Rohani","NK","Penyanyi rohani Indonesia.",["Bapa","Kau Sungguh Baik","Rindu","Mujizat Itu Nyata"],{wiki:null,q:"Nikita worship"}),
+    A("donmoen","Don Moen","Musisi","Rohani","DM","Penyanyi worship internasional.",["God Will Make A Way","Thank You Lord","Give Thanks","I Offer My Life"]),
+    A("hillsong","Hillsong Worship","Musisi","Rohani","HW","Tim worship global.",["What A Beautiful Name","Cornerstone","Oceans","King Of Kings"]),
+    A("bethel","Bethel Music","Musisi","Rohani","BM","Label worship.",["Goodness Of God","Reckless Love","Raise A Hallelujah","No Longer Slaves"]),
+    A("elevation","Elevation Worship","Musisi","Rohani","EW","Tim worship dengan lagu penuh kuasa.",["Praise","See A Victory","The Blessing","Same God"]),
+    A("gms","GMS Worship","Musisi","Rohani","GM","Tim worship GMS.",["Bapa Yang Kekal","Ku Mau Cinta Yesus","Besar AnugerahMu","Sungguh Kubersyukur"],{wiki:null}),
+    A("maria","Maria Shandi","Musisi","Rohani","MS","Penyanyi rohani.",["Ku Mau Cinta Yesus","Bapa Engkau Baik","Sungguh Indah","Ku Diberkati"],{wiki:null}),
+    A("blackpink","BLACKPINK","Musisi","K-Pop","BP","Girl group K-Pop global.",["How You Like That","DDU-DU DDU-DU","Kill This Love","Pink Venom"],{wiki:"Blackpink"}),
+    A("bts","BTS","Musisi","K-Pop","BTS","Boy group K-Pop legendaris.",["Dynamite","Butter","Spring Day","Boy With Luv"]),
+    A("twice","TWICE","Musisi","K-Pop","TW","Girl group K-Pop catchy.",["Fancy","TT","What Is Love","Feel Special"],{wiki:"Twice (group)"}),
+    A("exo","EXO","Musisi","K-Pop","EX","Boy group K-Pop.",["Love Shot","Monster","Growl","Ko Ko Bop"],{wiki:"Exo (band)"}),
+    A("iu","IU","Musisi","K-Pop","IU","Soloist K-Pop.",["Good Day","Palette","BBIBBI","Love Poem"],{wiki:"IU (singer)",q:"IU Lee Ji-eun"}),
+    A("seventeen","SEVENTEEN","Musisi","K-Pop","SV","Boy group K-Pop spektakuler.",["Very Nice","Left & Right","Pretty U","Hot"],{wiki:"Seventeen (South Korean band)"}),
+    A("nct","NCT","Musisi","K-Pop","NCT","Boy group K-Pop.",["Kick It","Boss","Cherry Bomb","Hot Sauce"],{wiki:"NCT (band)"}),
+    A("redvelvet","Red Velvet","Musisi","K-Pop","RV","Girl group K-Pop.",["Psycho","Bad Boy","Peek-A-Boo","Feel My Rhythm"],{wiki:"Red Velvet (group)"}),
+    A("aespa","aespa","Musisi","K-Pop","AE","Girl group K-Pop metaverse.",["Next Level","Savage","Black Mamba","Girls"],{wiki:"Aespa"}),
+    A("newjeans","NewJeans","Musisi","K-Pop","NJ","Girl group K-Pop Y2K.",["Ditto","Hype Boy","OMG","Super Shy"]),
+    A("ive","IVE","Musisi","K-Pop","IV","Girl group K-Pop.",["Love Dive","After Like","I AM","Eleven"],{wiki:"Ive (group)"}),
+    A("straykids","Stray Kids","Musisi","K-Pop","SK","Boy group K-Pop.",["God's Menu","Thunderous","Maniac","S-Class"]),
+    A("txt","TOMORROW X TOGETHER","Musisi","K-Pop","TX","Boy group K-Pop youthful.",["Sugar Rush Ride","Anti-Romantic","Blue Hour","0X1=LOVESONG"],{wiki:"Tomorrow X Together",q:"TOMORROW X TOGETHER"}),
+    A("itzy","ITZY","Musisi","K-Pop","IT","Girl group K-Pop.",["Dalla Dalla","Wannabe","Not Shy","Sneakers"],{wiki:"Itzy"}),
+    A("enhypen","ENHYPEN","Musisi","K-Pop","EN","Boy group K-Pop vampire.",["Fever","Drunk-Dazed","Bite Me","Polaroid Love"],{wiki:"Enhypen"}),
+    A("gidle","(G)I-DLE","Musisi","K-Pop","GI","Girl group K-Pop.",["Tomboy","Queencard","Nxde","Latata"],{wiki:"(G)I-dle"}),
+    A("agnes","Agnes Monica","Musisi","Pop","AM","Diva pop Indonesia.",["Paralyzed","Coke Bottle","Rindu","Matahariku"],{wiki:"Agnez Mo",wikiId:"Agnez Mo",q:"Agnez Mo"}),
+    A("bcl","Bunga Citra Lestari","Musisi","Pop","BC","Penyanyi dan aktris.",["Sunny","Cinta Sejati","Pernah Muda","Kecewa"]),
+    A("hivi","HIVI!","Musisi","Pop","HV","Band pop easy listening.",["Orang Ke 3","Siapkah Kau Tuk Jatuh Cinta","Pelangi dan Bulan","Sama Sama"],{wiki:"HIVI!",q:"HIVI band"}),
+    A("ran","RAN","Musisi","Pop","RN","Trio pop Indonesia.",["Dekat Di Hati","Kulakukan Semua Untukmu","Selamat Pagi","Sepeda"],{wiki:null,q:"RAN band Dekat Di Hati"}),
+    A("jason","Jason Ranti","Musisi","Indie","JR","Musisi dengan lirik satir.",["Jangan Menangis","Lagipula Hidup Akan Berakhir","Sekarang Aku Tahu","Bebas"]),
+    A("danilla","Danilla","Musisi","Indie","DN","Penyanyi jazzy puitis.",["Buaian","Kalapuna","Mengunci Ingatan","Laut"],{wiki:"Danilla Riyadi"}),
+    A("ernest","Ernest Prakasa","Komedian","Comedy","EP","Komedian dan sutradara.",["Stand Up Comedy","Comedy Show"])
+];
+const byId=Object.fromEntries(artists.map(a=>[a.id,a]));
+
+const PHOTO_KEY="jerukaPhotos_v3";
+let photoCache={};
+try{photoCache=JSON.parse(localStorage.getItem(PHOTO_KEY)||"{}")}catch(e){photoCache={}}
+function savePhotoCache(){try{localStorage.setItem(PHOTO_KEY,JSON.stringify(photoCache))}catch(e){}}
+artists.forEach(a=>{a.avatar=makeAvatar(a.name,a.initial);a.photo=photoCache[a.id]||a.avatar;});
+
+function photoError(img){
+    const a=byId[img.dataset.photo];
+    if(!a||img.getAttribute("src")===a.avatar)return;
+    delete photoCache[a.id];savePhotoCache();
+    a.photo=a.avatar;img.src=a.avatar;
+}
+
+function probe(url){
+    return new Promise(res=>{
+        if(!url)return res(false);
+        let done=false;const im=new Image();
+        const fin=v=>{if(!done){done=true;clearTimeout(t);res(v)}};
+        const t=setTimeout(()=>fin(false),9000);
+        im.onload=()=>fin(im.naturalWidth>60);
+        im.onerror=()=>fin(false);
+        im.src=url;
+    });
+}
+async function fetchJSON(url){
+    const ctrl=new AbortController();const t=setTimeout(()=>ctrl.abort(),8000);
+    try{const r=await fetch(url,{signal:ctrl.signal});return r.ok?await r.json():null}
+    catch(e){return null}finally{clearTimeout(t)}
+}
+async function wikiThumb(lang,title){
+    const d=await fetchJSON(`https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g,"_"))}`);
+    if(!d||d.type==="disambiguation"||!d.thumbnail||!d.thumbnail.source)return null;
+    return d.thumbnail.source.replace(/\/\d+px-/,"/500px-");
+}
+async function deezerArtistImg(name){
+    try{
+        const d=await fetchJSON(`https://api.deezer.com/search/artist?q=${encodeURIComponent(name)}&limit=1`);
+        if(d&&d.data&&d.data[0]){
+            return d.data[0].picture_xl||d.data[0].picture_big||d.data[0].picture_medium;
+        }
+    }catch(e){}
+    return null;
+}
+function itunesArt(q,name){
+    return new Promise(res=>{
+        $.ajax({url:`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&media=music&entity=album&limit=3`,dataType:"jsonp",timeout:8000})
+        .done(d=>{
+            const key=name.toLowerCase().replace(/[^a-z0-9 ]/g,"").split(" ")[0];
+            const r=(d&&d.results||[]).find(x=>x.artworkUrl100&&(x.artistName||"").toLowerCase().replace(/[^a-z0-9 ]/g,"").includes(key));
+            res(r?r.artworkUrl100.replace(/\d+x\d+bb/,"600x600bb"):null);
+        }).fail(()=>res(null));
+    });
+}
+async function resolvePhoto(a){
+    const tries=[];
+    if(a.image)tries.push(()=>a.image);
+    tries.push(()=>deezerArtistImg(a.q||a.name));
+    if(a.wiki!==null){
+        tries.push(()=>wikiThumb("en",a.wiki||a.name));
+        tries.push(()=>wikiThumb("id",a.wikiId||a.wiki||a.name));
+    }
+    tries.push(()=>itunesArt(a.q,a.name));
+    for(const t of tries){
+        const url=await t();
+        if(url&&await probe(url))return url;
+    }
+    return null;
+}
+function applyPhoto(a,url){
+    a.photo=url;
+    document.querySelectorAll(`img[data-photo="${a.id}"]`).forEach(img=>{
+        img.src=url;
+    });
+}
+function startPhotoLoader(){
+    const first=["tulus","raisa","lyodra","mahalini","tiara"];
+    const queue=[...first.map(id=>byId[id]),...artists.filter(a=>!first.includes(a.id))]
+        .filter(a=>a.photo===a.avatar);
+    let running=0;
+    (function next(){
+        while(running<5&&queue.length){
+            const a=queue.shift();running++;
+            resolvePhoto(a).then(url=>{
+                if(url){photoCache[a.id]=url;savePhotoCache();applyPhoto(a,url);}
+            }).finally(()=>{running--;next();});
+        }
+    })();
+}
+function hydratePhotos(){
+    document.querySelectorAll("img[data-photo]").forEach(img=>{
+        const a=byId[img.dataset.photo];if(a)img.src=a.photo;
+    });
+}
+
+/* ===== EVENT & MERCH ===== */
+const events=[
+    {id:"e1",name:"JERUKA Music Fest",artist:"Lyodra • Tulus • Mahalini",date:"12 Desember 2026",iso:"2026-12-12",location:"Bandung Convention Hall",price:250000,icon:"🎤",grad:"linear-gradient(135deg,#312e81,#be185d)"},
+    {id:"e2",name:"JERUKA Indie Night",artist:"Hindia • Nadin Amizah • Pamungkas",date:"20 Desember 2026",iso:"2026-12-20",location:"Sabuga Bandung",price:200000,icon:"🎸",grad:"linear-gradient(135deg,#0e7490,#6d28d9)"},
+    {id:"e3",name:"JERUKA K-Pop Night",artist:"BLACKPINK • BTS • TWICE",date:"09 Januari 2027",iso:"2027-01-09",location:"JERUKA Arena Bandung",price:350000,icon:"🌟",grad:"linear-gradient(135deg,#be185d,#f97316)"},
+    {id:"e4",name:"JERUKA Rohani Night",artist:"Sari Simorangkir • JPCC Worship",date:"24 Januari 2027",iso:"2027-01-24",location:"Bandung Creative Center",price:300000,icon:"✝️",grad:"linear-gradient(135deg,#1e3a8a,#7c3aed)"}
+];
+const merch=[
+    {id:"m1",name:"JERUKA Official T-Shirt",price:120000,stock:25,image:"../IMAGE/Baju.jpeg",desc:"Kaos katun premium dengan logo JERUKA"},
+    {id:"m2",name:"JERUKA Signature Hoodie",price:250000,stock:12,image:"../IMAGE/Jaket.jpeg",desc:"Hoodie fleece tebal, hangat & nyaman"},
+    {id:"m3",name:"JERUKA Tote Bag",price:85000,stock:30,image:"../IMAGE/Tote bag.jpeg",desc:"Tote bag kanvas kuat untuk sehari-hari"},
+    {id:"m4",name:"JERUKA Cap",price:95000,stock:18,image:"../IMAGE/Topi.jpeg",desc:"Topi snapback dengan bordir logo JERUKA"},
+    {id:"m5",name:"JERUKA Poster",price:50000,stock:40,image:"../IMAGE/Stiker.jpeg",desc:"Poster eksklusif edisi terbatas"},
+    {id:"m6",name:"JERUKA Keychain",price:35000,stock:50,image:"../IMAGE/Keychan.jpeg",desc:"Gantungan kunci metal premium"}
+];
+
+let cart=[];
+try{cart=JSON.parse(localStorage.getItem("jerukaCart")||"[]")}catch(e){cart=[]}
+let favs=new Set();
+try{favs=new Set(JSON.parse(localStorage.getItem("jerukaFavs")||"[]"))}catch(e){}
+
+const REDUCED=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const FINE=matchMedia("(hover:hover) and (pointer:fine)").matches&&!REDUCED;
+function rupiah(n){return "Rp"+Number(n).toLocaleString("id-ID");}
+let toastT;
+function toast(msg){
+    const t=$("#toast");t.text(msg).addClass("show");
+    clearTimeout(toastT);toastT=setTimeout(()=>t.removeClass("show"),2400);
+}
+
+const revealIO="IntersectionObserver" in window?new IntersectionObserver(es=>es.forEach(en=>{
+    if(en.isIntersecting){en.target.classList.add("in");revealIO.unobserve(en.target);}
+}),{threshold:.1,rootMargin:"0px 0px -30px 0px"}):null;
+const countIO="IntersectionObserver" in window?new IntersectionObserver(es=>es.forEach(en=>{
+    if(en.isIntersecting){countUp(en.target);countIO.unobserve(en.target);}
+}),{threshold:.6}):null;
+function observeAll(){
+    document.querySelectorAll(".reveal:not(.in)").forEach(el=>revealIO?revealIO.observe(el):el.classList.add("in"));
+}
+function countUp(el){
+    const to=+el.dataset.count,suf=el.dataset.suffix||"";
+    if(REDUCED){el.textContent=to+suf;return;}
+    const t0=performance.now(),dur=1400;
+    (function f(t){
+        const p=Math.min((t-t0)/dur,1);
+        el.textContent=Math.round(to*(1-Math.pow(1-p,3)))+suf;
+        if(p<1)requestAnimationFrame(f);
+    })(t0);
+}
+
+function goToPage(name){
+    if(!document.getElementById(name))return;
+    $(".page").addClass("hidden-page");
+    $("#"+name).removeClass("hidden-page");
+    $(".nav-link").removeClass("active");
+    $(`.nav-link[data-page="${name}"]`).addClass("active");
+    $("#mobileNav").slideUp(200);
+    window.scrollTo({top:0,behavior:REDUCED?"auto":"smooth"});
+    requestAnimationFrame(observeAll);
+}
+$(".nav-link,.mobile-nav a").on("click",function(){goToPage($(this).data("page"));});
+$("#mobileButton").on("click",()=>$("#mobileNav").slideToggle(200));
+$(window).on("resize",()=>{if(innerWidth>760)$("#mobileNav").hide();});
+
+window.addEventListener("scroll",()=>{
+    const h=document.documentElement;
+    const p=h.scrollTop/((h.scrollHeight-h.clientHeight)||1);
+    document.getElementById("scrollProgress").style.transform=`scaleX(${p})`;
+    document.getElementById("navbar").classList.toggle("scrolled",h.scrollTop>20);
+},{passive:true});
+
+if(FINE){
+    const hv=document.getElementById("heroVisual");
+    if(hv){
+        document.addEventListener("pointermove",e=>{
+            hv.style.setProperty("--px",(e.clientX/innerWidth-.5).toFixed(3));
+            hv.style.setProperty("--py",(e.clientY/innerHeight-.5).toFixed(3));
+        },{passive:true});
+    }
+}
+
+function generateGenreOptions(){
+    const genres=[...new Set(artists.map(a=>a.genre))].sort();
+    $("#genreFilter").html(`<option value="all">Semua Genre</option>`+genres.map(g=>`<option value="${g}">${g}</option>`).join(""));
+    renderPills(genres);
+}
+function renderPills(genres){
+    const cur=$("#genreFilter").val()||"all";
+    $("#genrePills").html([`<button class="pill ${cur==="all"?"active":""}" data-genre="all">Semua</button>`]
+        .concat(genres.map(g=>`<button class="pill ${cur===g?"active":""}" data-genre="${g}">${g}</button>`)).join(""));
+}
+$(document).on("click",".pill",function(){
+    $("#genreFilter").val($(this).data("genre"));
+    $(".pill").removeClass("active");$(this).addClass("active");
+    renderArtists();
+});
+$("#genreFilter").on("change",function(){
+    $(".pill").removeClass("active");
+    $(`.pill[data-genre="${$(this).val()}"]`).addClass("active");
+});
+
+function artistCard(a,i){
+    const d=Math.min((i||0)*45,600);
+    return `
+    <div class="artist-card reveal ${favs.has(a.id)?"is-fav":""}" data-id="${a.id}" tabindex="0" role="button" aria-label="Profil ${a.name}" style="--d:${d}ms">
+        <div class="artist-photo-wrap">
+            <img data-photo="${a.id}" src="${a.photo}" alt="Foto ${a.name}" loading="lazy" onerror="photoError(this)">
+        </div>
+        <span class="artist-chip">${a.genre}</span>
+        <i class="fas fa-heart fav-mark"></i>
+        <div class="artist-overlay">
+            <span>${a.category}</span>
+            <h3>${a.name}</h3>
+            <p>Lihat profil</p>
+            <div class="artist-links">
+                <a class="spotify-link" href="${a.spotify}" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="fab fa-spotify"></i> Spotify</a>
+                <a class="youtube-link" href="${a.youtube}" target="_blank" rel="noopener" onclick="event.stopPropagation()"><i class="fab fa-youtube"></i> YouTube</a>
+            </div>
+        </div>
+    </div>`;
+}
+function renderArtists(){
+    const keyword=($("#artistSearch").val()||"").toLowerCase().trim();
+    const genre=$("#genreFilter").val();
+    const list=artists.filter(a=>a.name.toLowerCase().includes(keyword)&&(genre==="all"||a.genre===genre))
+                      .sort((x,y)=>x.name.localeCompare(y.name));
+    $("#allArtists").html(list.length?list.map(artistCard).join(""):`<div class="empty" style="grid-column:1/-1">Artis tidak ditemukan. Coba kata kunci atau genre lain.</div>`);
+    $("#artistResultCount").text(`Menampilkan ${list.length} dari ${artists.length} artis`);
+    $("#homeArtists").html(artists.slice(0,5).map(artistCard).join(""));
+    requestAnimationFrame(observeAll);
+}
+$("#artistSearch,#genreFilter").on("input change",renderArtists);
+
+/* MODAL ARTIS */
+let currentArtist=null,currentSongIndex=-1,currentAudioUrl=null,closeT=null;
+
+function openArtist(id){
+    const a=byId[id];if(!a)return;
+    clearTimeout(closeT);
+    currentArtist=a;currentSongIndex=-1;stopAudio();
+
+    $("#artistModal").stop(true,true).removeClass("show");
+    $("#songsDropdown").removeClass("open");
+    $("#audioPlayer").removeClass("active");
+    $("#playerError").removeClass("show");
+
+    $("#modalArtistCategory").text(`${a.category} • ${a.genre}`);
+    $("#modalArtistName").text(a.name);
+    $("#modalArtistGenre").text(`Genre: ${a.genre}`);
+    $("#modalArtistBio").text(a.bio);
+    $("#modalArtistImage,#modalAmbient").attr({"data-photo":a.id,src:a.photo,alt:`Foto ${a.name}`});
+    setFavButton();
+
+    renderSongList(a);
+    $("#modalArtistPlatforms").html(`
+        <a class="spotify-link" href="${a.spotify}" target="_blank" rel="noopener"><i class="fab fa-spotify"></i> Buka di Spotify</a>
+        <a class="youtube-link" href="${a.youtube}" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> Buka di YouTube</a>`);
+
+    $("#artistModal").css("display","flex");
+    $("body").addClass("modal-open");
+    setTimeout(()=>$("#artistModal").addClass("show"),20);
+}
+$(document).on("click",".artist-card",function(e){
+    if($(e.target).closest("a").length)return;
+    const $c=$(this);$c.addClass("pulse");setTimeout(()=>$c.removeClass("pulse"),500);
+    openArtist($c.data("id"));
+});
+$(document).on("keydown",".artist-card",function(e){
+    if(e.key==="Enter"||e.key===" "){e.preventDefault();openArtist($(this).data("id"));}
+});
+
+function closeArtistModal(){
+    stopAudio();currentSongIndex=-1;
+    $("#artistModal").removeClass("show");
+    $("body").removeClass("modal-open");
+    closeT=setTimeout(()=>$("#artistModal").fadeOut(200),450);
+}
+$("#closeArtistModal,#backArtistModal").on("click",function(e){e.preventDefault();e.stopPropagation();closeArtistModal();});
+$("#artistModal").on("click",function(e){if(e.target===this)closeArtistModal();});
+
+function setFavButton(){
+    const on=currentArtist&&favs.has(currentArtist.id);
+    $("#favArtistModal").toggleClass("on",!!on).find("i").attr("class",on?"fas fa-heart":"far fa-heart");
+}
+$("#favArtistModal").on("click",function(e){
+    e.stopPropagation();if(!currentArtist)return;
+    const id=currentArtist.id;
+    if(favs.has(id)){favs.delete(id);toast(`${currentArtist.name} dihapus dari favorit.`);}
+    else{favs.add(id);toast(`${currentArtist.name} ditambahkan ke favorit.`);}
+    try{localStorage.setItem("jerukaFavs",JSON.stringify([...favs]))}catch(err){}
+    $(`.artist-card[data-id="${id}"]`).toggleClass("is-fav",favs.has(id));
+    setFavButton();
+});
+
+$(document).on("click","#artistPhotoClick",function(e){
+    const $p=$(this);$p.addClass("zoom-effect");setTimeout(()=>$p.removeClass("zoom-effect"),600);
+    const r=this.getBoundingClientRect();
+    const $h=$('<div class="heart-pop">💖</div>').css({left:(e.clientX-r.left-20)+"px",top:(e.clientY-r.top-20)+"px"});
+    $p.append($h);setTimeout(()=>$h.remove(),1000);
+});
+
+function renderSongList(a){
+    $("#songCount").text(a.songs.length);
+    $("#songsList").html(a.songs.map((s,i)=>`
+        <div class="song-item" data-index="${i}" data-song="${s.replace(/"/g,"&quot;")}">
+            <span class="song-num">${i+1}</span>
+            <div class="song-info"><div class="song-title">${s}</div><div class="song-artist">${a.name}</div></div>
+            <span class="song-play-icon"><i class="fas fa-play"></i></span>
+        </div>`).join(""));
+}
+$("#songsToggle").on("click",function(e){e.stopPropagation();$("#songsDropdown").toggleClass("open");});
+
+/* KLIK LAGU — multi-strategi pencarian preview */
+$(document).on("click",".song-item",function(e){
+    e.stopPropagation();
+    const $item=$(this);
+    const index=parseInt($item.data("index"));
+    const songTitle=$item.data("song");
+    const artistName=currentArtist?currentArtist.name:"";
+
+    if(index===currentSongIndex&&currentAudioUrl){togglePlay();return;}
+
+    $(".song-item").removeClass("active loading");
+    $item.addClass("active loading").find(".song-play-icon i").attr("class","fas fa-spinner fa-spin");
+    currentSongIndex=index;
+
+    $("#playerError").removeClass("show");
+    $("#playerTitle").text(songTitle);
+    $("#playerArtist").text(artistName);
+    $("#playerAlbumArt").html('<i class="fas fa-spinner fa-spin"></i>');
+    $("#audioPlayer").addClass("active");
+
+    const queries=[
+        `${artistName} ${songTitle}`,
+        `${songTitle} ${artistName}`,
+        `${songTitle}`,
+        `${artistName}`,
+    ];
+
+    function tryQuery(i){
+        if(i>=queries.length){
+            showPlayerError("Preview tidak tersedia untuk lagu ini. Coba lagu lain.");
+            return;
+        }
+        const q=queries[i];
+        $.ajax({
+            url:`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&media=music&entity=song&limit=5`,
+            dataType:"jsonp",
+            timeout:12000
+        })
+        .done(function(data){
+            const results=(data&&data.results)||[];
+            const artistKey=artistName.toLowerCase().replace(/[^a-z0-9 ]/g,"").split(" ")[0];
+            let match=results.find(t=>{
+                if(!t.previewUrl)return false;
+                const tName=(t.artistName||"").toLowerCase().replace(/[^a-z0-9 ]/g,"");
+                return tName.includes(artistKey);
+            });
+            if(!match&&i>=2){
+                match=results.find(t=>t.previewUrl);
+            }
+            if(match&&match.previewUrl){
+                $("#playerAlbumArt").html(
+                    match.artworkUrl60
+                        ?`<img src="${match.artworkUrl60}" alt="" style="width:100%;height:100%;object-fit:cover">`
+                        :"🎵"
+                );
+                $("#playerTitle").text(match.trackName||songTitle);
+                $("#playerArtist").text(match.artistName||artistName);
+                playAudioPreview(match.previewUrl,index);
+            }else{
+                tryQuery(i+1);
+            }
+        })
+        .fail(function(){tryQuery(i+1);});
+    }
+    tryQuery(0);
+});
+
+const audioEl=document.getElementById("previewAudio");
+function playAudioPreview(url,index){
+    currentAudioUrl=url;currentSongIndex=index;
+    audioEl.src=url;audioEl.load();
+    $("#audioPlayer").addClass("active");$("#playerError").removeClass("show");
+    const p=audioEl.play();
+    if(p!==undefined){
+        p.then(()=>{updatePlayIcon(true);$(`.song-item[data-index="${index}"]`).removeClass("loading");})
+         .catch(()=>{updatePlayIcon(false);$(`.song-item[data-index="${index}"]`).removeClass("loading");});
+    }
+}
+function togglePlay(){
+    if(!currentAudioUrl)return;
+    if(audioEl.paused){audioEl.play();updatePlayIcon(true);}else{audioEl.pause();updatePlayIcon(false);}
+}
+function stopAudio(){
+    audioEl.pause();
+    if(audioEl.getAttribute("src")){audioEl.currentTime=0;audioEl.removeAttribute("src");audioEl.load();}
+    currentAudioUrl=null;updatePlayIcon(false);
+    $("#progressFill").css("width","0%");$("#timeLabel").text("0:00");
+}
+function updatePlayIcon(playing){
+    $("#playBtn i").attr("class",playing?"fas fa-pause":"fas fa-play");
+    if(currentSongIndex>=0){
+        $(`.song-item[data-index="${currentSongIndex}"] .song-play-icon i`).attr("class",playing?"fas fa-volume-up":"fas fa-play");
+    }
+}
+function showPlayerError(msg){
+    $(".song-item").removeClass("loading").find(".song-play-icon i").attr("class","fas fa-play");
+    $("#playerAlbumArt").html("🎵");
+    $("#playerError").text("⚠️ "+(msg||"Preview tidak tersedia untuk lagu ini.")).addClass("show");
+    $("#audioPlayer").addClass("active");
+    currentSongIndex=-1;
+}
+$("#playBtn").on("click",function(){
+    if(!currentAudioUrl){toast("Pilih lagu dulu untuk memutar preview.");return;}
+    togglePlay();
+});
+$("#playerCancel").on("click",function(e){
+    e.stopPropagation();stopAudio();currentSongIndex=-1;
+    $(".song-item").removeClass("active loading");$("#audioPlayer").removeClass("active");
+});
+audioEl.addEventListener("timeupdate",()=>{
+    if(audioEl.duration){
+        $("#progressFill").css("width",(audioEl.currentTime/audioEl.duration*100)+"%");
+        $("#timeLabel").text(formatTime(audioEl.currentTime));
+    }
+});
+audioEl.addEventListener("ended",()=>{updatePlayIcon(false);$("#progressFill").css("width","0%");$("#timeLabel").text("0:00");});
+$("#progressBar").on("click",function(e){
+    if(!audioEl.duration)return;
+    const r=this.getBoundingClientRect();
+    audioEl.currentTime=(e.clientX-r.left)/r.width*audioEl.duration;
+});
+function formatTime(s){const m=Math.floor(s/60),x=Math.floor(s%60);return m+":"+(x<10?"0":"")+x;}
+
+/* EVENTS */
+function countdown(iso){
+    const days=Math.ceil((new Date(iso+"T00:00:00")-new Date())/864e5);
+    if(days>1)return `${days} hari lagi`;
+    if(days===1)return "Besok";
+    if(days===0)return "Hari ini";
+    return "Selesai";
+}
+function eventCard(e,i){
+    return `
+    <div class="event-card reveal" style="--d:${(i||0)*100}ms">
+        <div class="event-poster" style="background:${e.grad}">
+            <div class="event-top"><div class="event-date">${e.date}</div><div class="event-count">${countdown(e.iso)}</div></div>
+            <div class="event-icon">${e.icon}</div>
+        </div>
+        <div class="event-info">
+            <h3>${e.name}</h3>
+            <p>🎤 ${e.artist}</p>
+            <p>📍 ${e.location}</p>
+            <div class="price">${rupiah(e.price)}</div>
+            <button class="btn-primary buy-ticket" data-id="${e.id}"><i class="fas fa-ticket"></i> Beli Tiket</button>
+        </div>
+    </div>`;
+}
+function renderEvents(){
+    $("#allEvents").html(events.map(eventCard).join(""));
+    $("#homeEvents").html(events.slice(0,3).map(eventCard).join(""));
+}
+$(document).on("click",".buy-ticket",function(){
+    const e=events.find(x=>x.id===$(this).data("id"));
+    addToCart({id:e.id,type:"ticket",name:`Ticket - ${e.name}`,price:e.price,icon:e.icon});
+    toast(`Tiket ${e.name} masuk ke keranjang.`);
+});
+
+function merchCard(m,i){
+    return `
+    <div class="merch-card reveal" style="--d:${(i||0)*80}ms">
+        <div class="merch-photo">
+            <img src="${m.image}" alt="${m.name}" loading="lazy"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+            <div class="merch-fallback" style="display:none">🛍️</div>
+            ${m.stock<=15?`<div class="merch-badge">Sisa ${m.stock}</div>`:""}
+        </div>
+        <div class="merch-info">
+            <h3>${m.name}</h3>
+            <p>${m.desc || "Official JERUKA Merchandise"}</p>
+            <div class="stock">Stok: ${m.stock}</div>
+            <div class="merch-price">${rupiah(m.price)}</div>
+            <button class="btn-primary add-merch" data-id="${m.id}" ${m.stock<=0?"disabled":""}>
+                <i class="fas fa-plus"></i> Add to Cart
+            </button>
+        </div>
+    </div>`;
+}
+function renderMerch(){$("#merchGrid").html(merch.map(merchCard).join(""));}
+$(document).on("click",".add-merch",function(){
+    const m=merch.find(x=>x.id===$(this).data("id"));
+    addToCart({id:m.id,type:"merch",name:m.name,price:m.price,icon:m.icon});
+    toast(`${m.name} masuk ke keranjang.`);
+});
+
+/* CART */
+function saveCart(){try{localStorage.setItem("jerukaCart",JSON.stringify(cart))}catch(e){}}
+function addToCart(item){
+    const f=cart.find(c=>c.id===item.id&&c.type===item.type);
+    if(f)f.qty++;else cart.push({...item,qty:1});
+    saveCart();renderCart();
+    const $c=$("#cartCount").removeClass("bump");void $c[0].offsetWidth;$c.addClass("bump");
+}
+function changeQty(i,n){cart[i].qty+=n;if(cart[i].qty<=0)cart.splice(i,1);saveCart();renderCart();}
+function removeCart(i){cart.splice(i,1);saveCart();renderCart();}
+function renderCart(){
+    $("#cartCount").text(cart.reduce((s,i)=>s+i.qty,0));
+    $("#cartItems").html(cart.length?cart.map((item,i)=>`
+        <div class="cart-item">
+            <div class="cart-icon">${item.icon}</div>
+            <div>
+                <h4>${item.name}</h4>
+                <p>${rupiah(item.price)} × ${item.qty}</p>
+                <div class="qty">
+                    <button onclick="changeQty(${i},-1)" aria-label="Kurangi">−</button>
+                    <span>${item.qty}</span>
+                    <button onclick="changeQty(${i},1)" aria-label="Tambah">+</button>
+                    <button class="remove-item" onclick="removeCart(${i})">Hapus</button>
+                </div>
+            </div>
+            <strong>${rupiah(item.price*item.qty)}</strong>
+        </div>`).join(""):`<div class="empty">Keranjang masih kosong.<br>Yuk pilih tiket atau merchandise.</div>`);
+    const sub=cart.reduce((s,i)=>s+i.price*i.qty,0);
+    const fee=sub?Math.round(sub*0.05):0;
+    $("#cartSubtotal").text(rupiah(sub));$("#cartFee").text(rupiah(fee));$("#cartTotal").text(rupiah(sub+fee));
+}
+function openCart(){renderCart();$("#cartOverlay,#cartDrawer").addClass("open");}
+function closeCart(){$("#cartOverlay,#cartDrawer").removeClass("open");}
+$("#cartButton").on("click",openCart);
+$("#closeCart,#cartOverlay").on("click",closeCart);
+$("#checkoutButton").on("click",function(){
+    if(!cart.length){toast("Keranjang masih kosong.");return;}
+    closeCart();cart=[];saveCart();renderCart();
+    $("#modalTitle").text("Checkout Berhasil 🎉");
+    $("#modalDescription").text("Pesanan berhasil dibuat sebagai simulasi front-end JERUKA.");
+    $("#modal").fadeIn(250).css("display","flex");
+});
+
+/* FORM */
+function populateMeetForm(){
+    $("#meetArtist").html(`<option value="">Pilih artis</option>`+[...artists].sort((a,b)=>a.name.localeCompare(b.name)).map(a=>`<option value="${a.id}">${a.name} — ${a.category}</option>`).join(""));
+    $("#meetEvent").html(`<option value="">Pilih event / session</option>`+events.map(e=>`<option value="${e.id}">${e.name} — ${e.date}</option>`).join(""));
+}
+$("#meetForm").on("submit",function(e){
+    e.preventDefault();
+    if(!this.checkValidity()){this.reportValidity();return;}
+    const a=byId[$("#meetArtist").val()];
+    toast(`Booking Meet & Greet ${a.name} berhasil dikirim.`);
+    this.reset();$("#meetCount").val(1);
+});
+$("#contactForm").on("submit",function(e){
+    e.preventDefault();
+    if(!this.checkValidity()){this.reportValidity();return;}
+    toast("Pesan terkirim. Terima kasih sudah menghubungi JERUKA!");
+    this.reset();
+});
+
+/* SEARCH */
+const SEARCH_HINT=`<p style="color:var(--muted);font-size:13px">Ketik nama artis, event, atau merchandise.</p>`;
+$("#searchButton").on("click",function(){
+    $("#searchOverlay").fadeIn(250).css("display","flex");
+    $("#searchInput").val("").focus();$("#searchResults").html(SEARCH_HINT);
+});
+$("#closeSearch").on("click",()=>$("#searchOverlay").fadeOut(200));
+$("#searchOverlay").on("click",function(e){if(e.target===this)$(this).fadeOut(200);});
+$("#searchInput").on("input",function(){
+    const key=$(this).val().toLowerCase().trim();
+    if(!key){$("#searchResults").html(SEARCH_HINT);return;}
+    const out=[];
+    artists.forEach(a=>{
+        if((a.name+" "+a.category+" "+a.genre).toLowerCase().includes(key))
+            out.push(`<div class="search-result" data-type="artist" data-id="${a.id}"><img src="${a.photo}" alt="" data-photo="${a.id}" onerror="photoError(this)"><div><strong>${a.name}</strong><br><small>${a.category} • ${a.genre}</small></div></div>`);
+    });
+    events.forEach(e=>{
+        if((e.name+" "+e.artist+" "+e.location).toLowerCase().includes(key))
+            out.push(`<div class="search-result" data-type="events"><div class="sr-icon">${e.icon}</div><div><strong>${e.name}</strong><br><small>${e.date} • ${e.location}</small></div></div>`);
+    });
+    merch.forEach(m=>{
+        if(m.name.toLowerCase().includes(key))
+            out.push(`<div class="search-result" data-type="merch"><div class="sr-icon">${m.icon}</div><div><strong>${m.name}</strong><br><small>${rupiah(m.price)}</small></div></div>`);
+    });
+    $("#searchResults").html(out.length?out.slice(0,30).join(""):`<p style="color:var(--muted);font-size:13px">Tidak ada hasil untuk "${$("<i>").text(key).html()}".</p>`);
+});
+$(document).on("click",".search-result",function(){
+    const t=$(this).data("type");
+    $("#searchOverlay").fadeOut(200);
+    if(t==="artist")openArtist($(this).data("id"));else goToPage(t);
+});
+
+/* THEME */
+function setTheme(light){
+    $("body").toggleClass("light-mode",light);
+    $("#themeButton i").attr("class",light?"fas fa-sun":"fas fa-moon");
+    $("meta[name=theme-color]").attr("content",light?"#f5f5fa":"#080812");
+    try{localStorage.setItem("jerukaTheme",light?"light":"dark")}catch(e){}
+}
+$("#themeButton").on("click",()=>setTheme(!$("body").hasClass("light-mode")));
+try{if(localStorage.getItem("jerukaTheme")==="light")setTheme(true);}catch(e){}
+
+$("#closeModal").on("click",()=>$("#modal").fadeOut(200));
+$("#modal").on("click",function(e){if(e.target===this)$(this).fadeOut(200);});
+
+$(document).on("keydown",function(e){
+    if(e.key!=="Escape")return;
+    if($("#artistModal").hasClass("show"))closeArtistModal();
+    else{$("#modal,#searchOverlay").fadeOut(200);closeCart();}
+});
+
+/* EFEK FOTO TIM (hero) */
+(function(){
+    const f=document.getElementById("teamFrame");if(!f)return;
+    const tilt=f.querySelector(".team-tilt");
+    if(FINE&&tilt){
+        f.addEventListener("pointermove",e=>{
+            const r=tilt.getBoundingClientRect();
+            const x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+            tilt.style.setProperty("--ry",((x-.5)*14).toFixed(2)+"deg");
+            tilt.style.setProperty("--rx",((.5-y)*14).toFixed(2)+"deg");
+        });
+        f.addEventListener("pointerleave",()=>{
+            tilt.style.setProperty("--rx","0deg");
+            tilt.style.setProperty("--ry","0deg");
+        });
+    }
+    f.addEventListener("click",e=>{
+        if(REDUCED)return;
+        const r=f.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+        const em=["✨","💖","⭐","🧡","💜"];
+        for(let i=0;i<14;i++){
+            const s=document.createElement("span");
+            s.textContent=em[i%em.length];
+            s.style.cssText=`position:absolute;left:${x}px;top:${y}px;font-size:${14+Math.random()*14}px;pointer-events:none;z-index:9`;
+            f.appendChild(s);
+            const a=Math.random()*Math.PI*2,d=60+Math.random()*90;
+            s.animate([
+                {transform:"translate(-50%,-50%) scale(.3)",opacity:1},
+                {transform:`translate(calc(-50% + ${Math.cos(a)*d}px),calc(-50% + ${Math.sin(a)*d-30}px)) scale(1.2) rotate(${Math.random()*80-40}deg)`,opacity:0}
+            ],{duration:900+Math.random()*500,easing:"cubic-bezier(.22,1,.36,1)"}).onfinish=()=>s.remove();
+        }
+    });
+})();
+
+/* INIT */
+$(document).ready(function(){
+    $("#statArtists").attr("data-count",artists.length);
+    $("#statEvents").attr("data-count",events.length);
+    $("#statMerch").attr("data-count",merch.length);
+
+    const names=artists.map(a=>`<span>${a.name}</span>`).join("");
+    $("#marqueeTrack").html(names+names);
+
+    generateGenreOptions();
+    renderArtists();
+    renderEvents();
+    renderMerch();
+    renderCart();
+    populateMeetForm();
+    hydratePhotos();
+    $("#searchResults").html(SEARCH_HINT);
+
+    document.querySelectorAll(".count").forEach(el=>countIO?countIO.observe(el):countUp(el));
+    observeAll();
+    startPhotoLoader();
+});
+</script>
+
+</body>
+</html>
